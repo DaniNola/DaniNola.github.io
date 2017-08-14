@@ -113,12 +113,42 @@ function nonFriends(name, data) {
       actualFriends.push(data[i]["friends"]);
     }
   }
-  
+//var daysArray = ["1", "2", "3", "4", "5"];
+//var courseHwork = ["4", "8", "15", "16", "23", "42"];
+
+var arr = actualFriends.concat(possibleFriends);
+var sorted_arr = arr.sort();
+var results = [];
+for (var j = 0; j < arr.length - 1; j++) {
+    if (sorted_arr[j + 1] == sorted_arr[j]) {
+        results.push(sorted_arr[j]);
+    }
+}
+
+console.log(results);
  
+}  
+/*  
   var possibleSet = new Set([possibleFriends]);
   var actualSet = new Set(actualFriends);
   var nonFrSet = [];
-  
+ 
+function nonFriends(name, data) {
+    var nonFr = [];
+    var match = false;
+
+    for ( var i = 0; i < name.length; i++ ) {
+        match = false;
+        for ( var e = 0; e < data.length; e++ ) {
+            if ( a[i] === b[e] ) {
+                matches = true;
+        }
+        if(!match) {
+            missings.push(nonFr[i] );
+    }
+    return nonFr;
+} 
+ 
   
   
   
@@ -126,6 +156,23 @@ function nonFriends(name, data) {
   //console.log(actualSet);
 
 } 
+*/
+//25 update object
+
+function updateObject(obj, key, val) {
+    obj[key] = val;
+    return obj;
+}
+
+//26 remove properties
+
+function removeProperties(obj, arr) {
+    for (var i = 0; i < Object.keys.length; i++) {
+        if (arr.indexOf(obj[i]) !== -1)
+        delete obj[i];
+    }
+}
+
 
 //28 dedup
 function dedup(data) {

@@ -30,6 +30,7 @@ _.identity = function(anything) {
     return anything;
 }
 
+
 /** _.typeOf()
 * Arguments:
 *   1) Anything
@@ -305,7 +306,14 @@ _.map = function(collection, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
-_
+_.pluck = function(array, prop) {
+    var result = [];
+    _.map(array, function(element, index, collection) {
+        result.push(element[prop]);
+    })
+    return result;
+}
+
 /** _.contains()
 * Arguments:
 *   1) An array
@@ -321,7 +329,9 @@ _
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
-
+_.contains = function(array, value) {
+    return (_.indexOf(array, value) !== -1) ? true : false;
+}
 
 
 /** _.every()
@@ -345,7 +355,26 @@ _
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
-
+_.every = function(collection, func) {
+   // check if array or object
+   // call function for every element -- access every element by looping over collection
+   // if the function returns true every time when run with current element, return true
+   // if the function ever returns false, return false
+   // use _.each to loop in this function
+   var result = true;
+   _.each(collection, function(e, i, c) {
+       if (func === undefined) {
+           func = function(e, i, c) {
+               return !!e;
+           };
+       } if (func(e, i, c) === false) {
+           result = false;
+       }
+   });
+   return result;
+};
+    
+    
 /** _.some()
 * Arguments:
 *   1) A collection
@@ -367,6 +396,19 @@ _
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func) {
+   var result = false;
+   _.each(collection, function(e, i, c) {
+       if (func === undefined) {
+           func = function(e, i, c) {
+               return e;
+           };
+       } if (func(e, i, c) === true) {
+           result = true;
+       }
+   });
+   return result;
+}
 
 /** _.reduce()
 * Arguments:
@@ -400,7 +442,7 @@ _.reduce = function(array, combine, seed) {
         combined = combine(combined, array[i], i, array);
     }
     return combined; 
-
+}
 
 /** _.extend()
 * Arguments:
@@ -416,6 +458,16 @@ _.reduce = function(array, combine, seed) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function (obj1) {
+    var args = Array.from(arguments);
+    _.each(arguments, function (element, index, array) {
+        for (var key in element) {
+            obj1[key] = element[key];
+        }
+    });
+    return obj1;
+}
 
 
 // This is the proper way to end a javascript library

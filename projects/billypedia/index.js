@@ -108,6 +108,23 @@ $(document).ready(function() {
             }).fadeIn('fast');
         })
         
+     var $billysRiders = data.riders;
+        
+        $("<div>")
+            .attr('id', 'riderTable')
+            .addClass('table')
+            .appendTo($('#section-recordings'));
+            
+        _.each($billysRiders, function(e, i, c) {
+            var $row = $billysRiders.
+            $('<tr>').text($billysRiders.e)
+                $('<td>').text($billysRiders[i]);
+                $("</tr>")
+            return $row;
+        });  
+        
+        $billysRiders(data).appendTo("body");
+        
         // YOUR CODE ABOVE HERE //
     })
     .fail(function() { console.log('getJSON on discography failed!'); });

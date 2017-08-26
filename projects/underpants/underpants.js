@@ -429,7 +429,7 @@ _.some = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-_.reduce = function(array, combine, seed) {
+function reduce(array, combine, seed) {
     let
         combined = seed, 
         i = 0;
@@ -443,6 +443,9 @@ _.reduce = function(array, combine, seed) {
     }
     return combined; 
 }
+
+
+
 
 /** _.extend()
 * Arguments:

@@ -103,60 +103,28 @@ function isFriend(name, obj) {
 }
 
 //24 non friends
-function nonFriends(name, data) {
-  var possibleFriends = [];
-  var actualFriends = [];
-  for (var i = 0; i < Object.keys(data).length; i++) {
-    if (name !== data[i]["name"]) {
-      possibleFriends.push(data[i]["name"]);
-    } else if (name === data[i]["name"]) {
-      actualFriends.push(data[i]["friends"]);
-    }
-  }
-//var daysArray = ["1", "2", "3", "4", "5"];
-//var courseHwork = ["4", "8", "15", "16", "23", "42"];
 
-var arr = actualFriends.concat(possibleFriends);
-var sorted_arr = arr.sort();
-var results = [];
-for (var j = 0; j < arr.length - 1; j++) {
-    if (sorted_arr[j + 1] == sorted_arr[j]) {
-        results.push(sorted_arr[j]);
-    }
-}
-
-console.log(results);
- 
-}  
-/*  
-  var possibleSet = new Set([possibleFriends]);
-  var actualSet = new Set(actualFriends);
-  var nonFrSet = [];
- 
 function nonFriends(name, data) {
     var nonFr = [];
-    var match = false;
-
-    for ( var i = 0; i < name.length; i++ ) {
-        match = false;
-        for ( var e = 0; e < data.length; e++ ) {
-            if ( a[i] === b[e] ) {
-                matches = true;
-        }
-        if(!match) {
-            missings.push(nonFr[i] );
+    
+    var indexOf = function(array, value) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] === value) {
+                return i;
+            } 
+        } return -1;
     }
-    return nonFr;
-} 
- 
-  
-  
-  
-  //console.log(possibleSet);
-  //console.log(actualSet);
+  for (var i = 0; i < Object.keys(data).length; i++) {
+    if (name !== data[i]["name"]) {
+      if (indexOf(data[i]["friends"], name) === -1) {
+        nonFr.push(data[i]["name"]);
+      }  
+    }
+  } 
+  return nonFr;
+}
 
-} 
-*/
+
 //25 update object
 
 function updateObject(obj, key, val) {
@@ -167,11 +135,13 @@ function updateObject(obj, key, val) {
 //26 remove properties
 
 function removeProperties(obj, arr) {
-    for (var i = 0; i < Object.keys.length; i++) {
-        if (arr.indexOf(obj[i]) !== -1)
-        delete obj[i];
-    }
+    for (var i = 0; i < arr.length; i++) {
+      key = arr[i];
+      delete obj[key];
+    }  
+    console.log(obj);
 }
+
 
 
 //28 dedup

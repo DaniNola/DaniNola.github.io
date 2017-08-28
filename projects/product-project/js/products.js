@@ -266,7 +266,7 @@ $('#search').on('click', function(event){
 });
 
 
-//<--------------------------------------SEARCH INPUT BOX------------------------------------------->
+//search
 
 // $('#search').on('click', function(event){
 //     var abc = ($('#product-description')[0]);
